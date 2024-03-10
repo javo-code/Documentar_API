@@ -26,68 +26,68 @@ paths:
         "500":
           description: Error del servidor.
 
-    /{id}:
-      get:
-        summary: Obtiene un producto por su ID.
-        description: Retorna un producto según su ID.
-        parameters:
-          - in: path
-            name: id
-            required: true
-            description: ID del producto a obtener.
-            schema:
-              type: string
-        responses:
-          "200":
-            description: Producto obtenido exitosamente.
-          "404":
-            description: Producto no encontrado.
-          "500":
-            description: Error del servidor.
-
-      put:
-        summary: Actualiza un producto existente.
-        description: Actualiza un producto según su ID.
-        parameters:
-          - in: path
-            name: id
-            required: true
-            description: ID del producto a actualizar.
-            schema:
-              type: string
-        requestBody:
+  /api/products/{id}: # Corregido el endpoint para las operaciones adicionales
+    get:
+      summary: Obtiene un producto por su ID.
+      description: Retorna un producto según su ID.
+      parameters:
+        - in: path
+          name: id
           required: true
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Product"
-        responses:
-          "200":
-            description: Producto actualizado exitosamente.
-          "400":
-            description: Datos del producto no válidos.
-          "404":
-            description: Producto no encontrado.
-          "500":
-            description: Error del servidor.
+          description: ID del producto a obtener.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto obtenido exitosamente.
+        "404":
+          description: Producto no encontrado.
+        "500":
+          description: Error del servidor.
 
-      delete:
-        summary: Elimina un producto existente.
-        description: Elimina un producto según su ID.
-        parameters:
-          - in: path
-            name: id
-            required: true
-            description: ID del producto a eliminar.
+    put:
+      summary: Actualiza un producto existente.
+      description: Actualiza un producto según su ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID del producto a actualizar.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
             schema:
-              type: string
-        responses:
-          "200":
-            description: Producto eliminado exitosamente.
-          "404":
-            description: Producto no encontrado.
-          "500":
-            description: Error del servidor.
+              $ref: "#/components/schemas/Product"
+      responses:
+        "200":
+          description: Producto actualizado exitosamente.
+        "400":
+          description: Datos del producto no válidos.
+        "404":
+          description: Producto no encontrado.
+        "500":
+          description: Error del servidor.
+
+    delete:
+      summary: Elimina un producto existente.
+      description: Elimina un producto según su ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID del producto a eliminar.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Producto eliminado exitosamente.
+        "404":
+          description: Producto no encontrado.
+        "500":
+          description: Error del servidor.
 
   /api/carts:
     get:

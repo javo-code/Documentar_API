@@ -35,9 +35,9 @@ components:
     Cart:
       type: object
       properties:
-        userId:
+        id:
           type: string
-          description: ID del usuario propietario del carrito.
+          description: ID del carrito.
         products:
           type: array
           items:

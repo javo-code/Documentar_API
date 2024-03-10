@@ -21,7 +21,6 @@ export default class MongoDao {
     }
   }
 
-
   async create(obj) {
     try {
       const response = await this.model.create(obj);
