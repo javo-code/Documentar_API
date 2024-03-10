@@ -41,6 +41,4 @@ export default class ProductController extends Controllers {
         next(error);
       }
   }
-
-
 }

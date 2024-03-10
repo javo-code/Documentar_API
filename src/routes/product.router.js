@@ -6,11 +6,14 @@ const router = Router();
 const controller = new ProductController();
 
 router
+//-------------------📌 PRODUCT MAIN ROUTES
     .get("/", controller.getAll)
     .get("/:id", controller.getById)
     .post("/", productValidator, controller.create)
     .put("/:id", controller.update)
     .delete("/:id", controller.delete)
+    
+//-------------------📌 PRODUCT ROUTES
     .get("/dto/:id", controller.getById)
     .post("/mockingproducts", controller.createRandomProducts)
 

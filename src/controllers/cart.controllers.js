@@ -1,3 +1,4 @@
+import { logger } from "../utils/logger.winston.js";
 import Controllers from "./class.controller.js";
 import CartService from "../services/cart.services.js";
 const cartService = new CartService();
@@ -18,7 +19,7 @@ export default class CartController extends Controllers {
       if (!newProdToUserCart) res.json({ msg: "Error add product to cart" });
       else res.json(newProdToUserCart);
     } catch (error) {
-      console.log("👹Error desde el addProd del carts.controller:",error); // Agrega un registro de depuración
+      logger.error("👹Error desde el addProd del carts.controller:",error);
       next(error);
     }
   };

@@ -18,7 +18,7 @@ export default class Controllers {
     try {
       const { id } = req.params;
       const item = await this.service.getById(id);
-      if (!item) return httpResponse.NotFound(res, "Item not found!");
+      if (!item) return httpResponse.NotFound(res, errorsDictionary.ERROR_CREATE_ITEM);
       else return httpResponse.Ok(res, item);
     } catch (error) {
       next(error)
@@ -28,7 +28,7 @@ export default class Controllers {
   create = async (req, res, next) => {
     try {
       const newItem = await this.service.create(req.body);
-      if (!newItem) return httpResponse.NotFound(res, errorsDictionary.ERROR_CREATE_PRODUCT);
+      if (!newItem) return httpResponse.NotFound(res, errorsDictionary.ERROR_CREATE_ITEM);
       else return httpResponse.Ok(res, newItem);
     } catch (error) {
       next(error)
@@ -39,7 +39,7 @@ export default class Controllers {
     try {
       const { id } = req.params;
       let item = await this.service.getById(id);
-      if (!item) return httpResponse.NotFound(res, "Item not found!");
+      if (!item) return httpResponse.NotFound(res, errorsDictionary.ERROR_CREATE_ITEM);
       const itemUpdated = await this.service.update(id, req.body);
       return httpResponse.Ok(res, itemUpdated);
     } catch (error) {
@@ -51,7 +51,7 @@ export default class Controllers {
     try {
       const { id } = req.params;
       const item = await this.service.getById(id);
-      if (!item) return httpResponse.NotFound(res, "Item not found!");
+      if (!item) return httpResponse.NotFound(res, errorsDictionary.ERROR_CREATE_ITEM);
       await this.service.delete(id);
       return httpResponse.Ok(res, "item deleted");
     } catch (error) {

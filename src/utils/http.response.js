@@ -8,7 +8,7 @@ const HttpStatus = {
 };
 
 export const errorsDictionary = {
-  ERROR_CREATE_PRODUCT: 'Error creating product - You must to complete all fields with the correct data type:',
+  ERROR_CREATE_ITEM: 'Error creating ITEM - Item Not Found:',
 }
 export class HttpResponse {
   Ok(res, data) {

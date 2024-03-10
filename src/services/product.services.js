@@ -1,7 +1,7 @@
 import Services from "./class.services.js";
 import factory from "../persistence/daos/factory.js";
 const { prodDao } = factory;
-import ProductRepository from "../repository/product.repository.js";
+import ProductRepository from "../persistence/repository/product.repository.js";
 import { createRandomProd } from "../mocks.js";
 import { ProductModel } from "../persistence/daos/mongoDB/products/product.model.js";
 const productRepository = new ProductRepository();
@@ -30,7 +30,7 @@ export default class ProductService extends Services {
       const randomProducts = await ProductModel.create(productsArray);
       return randomProducts
     } catch (error) {
-      console.log(error);
+        throw new Error(error.message);
     }
   };
 }
